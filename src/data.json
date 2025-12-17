@@ -1,0 +1,123 @@
+{
+  "employeeId": "EMP20241001",
+  "personalDetails": {
+    "fullName": "Aman Chauhan",
+    "designation": "React.js & Javascript Developer",
+    "phone": "+91 8423174102",
+    "email": "amanchauhan3050@gmail.com",
+    "address": {
+      "street": "Sector 16B",
+      "city": "Greater Noida",
+      "state": "Uttar Pradesh",
+      "country": "India"
+    }
+  },
+  "aboutMe": "Experienced Frontend Developer with 3.5 years in building high-performance web apps using JavaScript and React. Skilled in writing clean, scalable code and responsive UIs, with familiarity in Python and backend integration. Focused on seamless user experiences and code quality in fast-paced environments.",
+  "skills": [
+    "React.js",
+    "JavaScript",
+    "Next.js",
+    "Redux.js",
+    "jQuery",
+    "Node.js",
+    "Material UI",
+    "Tailwind CSS",
+    "CSS",
+    "JSX",
+    "XML",
+    "Owl",
+    "Git",
+    "Postman"
+  ],
+  "employmentDetails": [
+    {
+      "companyName": "Apping Technology",
+      "designation": "Javascript & React.js Developer",
+      "dateOfJoining": "2024-05",
+      "dateOfLeaving": null,
+      "employmentType": "Full-Time",
+      "workLocation": "On-site",
+      "responsibilities": [
+        "Built E-commerce and POS modules with React.js and state management tools.",
+        "Worked on custom pharmacy POS systems with loyalty programs and dynamic interfaces.",
+        "Collaborated with backend team for REST API integration."
+      ]
+    },
+    {
+      "companyName": "Wofo24 Technology",
+      "designation": "React.js Developer",
+      "dateOfJoining": "2022-08",
+      "dateOfLeaving": "2024-01",
+      "employmentType": "Full-Time",
+      "workLocation": "On-site",
+      "responsibilities": [
+        "Owned end-to-end frontend development for multiple projects, delivering scalable UIs.",
+        "Developed Bookeve Main & Tenant Web applications with scheduling, booking, and secure payments.",
+        "Enhanced UI performance and optimized API integrations."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "e-POS LHDN (Malaysia Government)",
+      "technologies": [
+        "JavaScript",
+        "Python",
+        "OWL",
+        "PostgreSQL"
+      ],
+      "description": "Government e-POS system with business registration, employee management, real-time reporting, and sales tracking."
+    },
+    {
+      "name": "JuzCare Pharmacy POS",
+      "technologies": [
+        "JavaScript",
+        "OWL"
+      ],
+      "description": "Customizable POS with theme-based UI, lot tracking, loyalty programs, expiry tracking, and prescription handling."
+    },
+    {
+      "name": "HKL Wine Shop E-commerce",
+      "technologies": [
+        "React.js",
+        "Redux",
+        "Node.js"
+      ],
+      "description": "Custom e-commerce solution with real-time inventory, age verification, and bulk order workflows."
+    },
+    {
+      "name": "Apping Work HRMS",
+      "technologies": [
+        "React.js",
+        "Node.js"
+      ],
+      "description": "HRMS platform with employee data, leave requests, timesheet tracking, role-based access, and performance optimization."
+    },
+    {
+      "name": "Bookeve – No-Code Platform",
+      "technologies": [
+        "React.js",
+        "Redux",
+        "Material UI"
+      ],
+      "description": "No-code platform for makeup artists to build websites, manage bookings, payments, and track revenue."
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science & Engineering",
+      "university": "Dr. A. P. J. Abdul Kalam Technical University, Lucknow (UP)",
+      "cgpa": "7.5"
+    },
+    {
+      "course": "MERN Stack Training",
+      "institute": "DUCAT, Noida Sector-15",
+      "duration": "Mar 2022 - Jul 2022"
+    },
+    {
+      "level": "Intermediate",
+      "school": "P T Deen Dayal S K I C, Kpaganj, Mau (UP)",
+      "score": "2nd Division"
+    }
+  ]
+}
