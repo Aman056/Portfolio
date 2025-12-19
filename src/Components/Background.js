@@ -1,20 +1,44 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Grid, Container } from '@mui/material'
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { motion } from 'framer-motion';
-import img from './img/getting_started_react_native_part_1_header_62b9349b47.png'
+import { motion, useDragControls, useInView, useTransform, useScroll, useAnimationFrame } from "framer-motion"
+import data from '../data.json'
+
 function Background() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
+    const controls = useDragControls();
+    const refBox = useRef(null);
+
+    useAnimationFrame((t) => {
+        const rotate = Math.sin(t / 10000) * 200;
+        const y = (1 + Math.sin(t / 1000)) * -50;
+        if (refBox.current) {
+            refBox.current.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${rotate}deg)`;
+        }
+    });
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["0 1", ".9 1"],
+    });
+
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
     return (
         <motion.div
+            style={{
+                background: "#EEEEEE",
+                color: '#393E46',
+                scale: scaleProgress,
+                opacity: opacityProgress
+            }}
             ref={ref}
         >
-            <Container sx={{ my: 3, p: 0, }} className='bio-container'>
+            <Container sx={{ my: 3, p: 0 }} className='bio-container'>
                 <Grid container>
-                    <Grid item lg={4} md={12} xs={12} sx={{ px: 3 }} >
+                    {/* LEFT SIDE - Background / Experience */}
+                    <Grid item lg={4} md={12} xs={12} sx={{ px: 3 }}>
                         <motion.h1 className='bio-title'
                             style={{
                                 marginTop: '130px',
@@ -28,27 +52,30 @@ function Background() {
 
                         <motion.div
                             style={{
-                                // marginTop: '130px',
                                 transform: isInView ? "none" : "translateY(20px)",
                                 opacity: isInView ? 1 : 0,
                                 transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                             }}
-                            className='background-div-bio'>
-                            <motion.span style={{ fontWeight: "600" }}>Wofo24 Technology Private Limited.</motion.span> &nbsp;
-                            <motion.span>Gaziabad</motion.span><br />
-                            <text>React Developer   &nbsp; 2022-24 </text><br />
-                            <hr />
-                            <motion.span style={{ fontWeight: "600" }}>DUCAT</motion.span> &nbsp;
-                            <motion.span>Noida Sector 15</motion.span><br />
-                            <text>MERN Stack Developer   &nbsp; 2022-july 2022-Dec </text><br />
-                            <hr />
-                            <motion.span style={{ fontWeight: "600" }}>Freelance, React Developer</motion.span> &nbsp;<br />
-                            {/* <motion.span>Noida Sector 15</motion.span><br/> */}
-                            <text>React Developer   &nbsp; 2024-Feb to Present </text>
-
+                            className='background-div-bio'
+                        >
+                            {data.employmentDetails.map((job, index) => (
+                                <div key={index}>
+                                    <motion.span style={{ fontWeight: "600" }}>
+                                        {job.companyName}
+                                    </motion.span> &nbsp;
+                                    <motion.span>{job.workLocation}</motion.span><br />
+                                    <text>
+                                        {job.designation} &nbsp; {job.dateOfJoining} - {job.dateOfLeaving || "Present"}
+                                    </text>
+                                    <br />
+                                    <hr />
+                                </div>
+                            ))}
                         </motion.div>
                     </Grid>
-                    <Grid item lg={4} md={12} xs={12} sx={{ px: 3 }} >
+
+                    {/* MIDDLE - Expertise / Skills */}
+                    <Grid item lg={3} md={12} xs={12} sx={{ px: 3 }}>
                         <motion.h1 className='bio-title'
                             style={{
                                 marginTop: '130px',
@@ -56,43 +83,43 @@ function Background() {
                                 opacity: isInView ? 1 : 0,
                                 transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                             }}
+                        >
+                            Expertise
+                        </motion.h1>
 
-                        >Expertise</motion.h1>
                         <motion.div
                             style={{
-                                // marginTop: '130px',
                                 transform: isInView ? "none" : "translateY(20px)",
                                 opacity: isInView ? 1 : 0,
                                 transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
                             }}
-                            className='background-div-bio'>
-
+                            className='background-div-bio'
+                        >
                             <ul style={{ paddingTop: '30px' }}>
-                                <li>React.js</li>
-                                <li>Redux.js</li>
-                                <li>Javascript.js</li>
-                                <li>MaterialUi</li>
-                                <li>Tailwind Css</li>
-                                <li>Bootstrap</li>
-                                <li>HTML</li>
-                                <li>CSS</li>
+                                {data.skills.map((skill, idx) => (
+                                    <li key={idx}>{skill}</li>
+                                ))}
                             </ul>
-
                         </motion.div>
                     </Grid>
-                    <Grid item lg={4} md={12} xs={12}>
-                    <Container sx={{ m: 0, p: 0 }}>
+
+                    {/* RIGHT SIDE - Rotating Cube */}
+                    <Grid item lg={5} md={12} xs={12}>
+                        <Container sx={{ m: 0, p: 0, display: 'flex', justifyContent: 'start', minHeight: "92vh", alignItems: 'center' }}>
                             <motion.div className='img-fit-div-bio'>
-                                <motion.img className='shadow-on-img bio-img' src={img} style={{
-                                    transform: isInView ? "none" : "translateY(20px)",
-                                    opacity: isInView ? 1 : 0,
-                                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-                                }} alt='' />
+                                <div className="container" style={{ zIndex: '000' }}>
+                                    <div className="cube" ref={refBox}>
+                                        {data.skills.slice(0, 6).map((skill, i) => (
+                                            <div key={i} className={`side ${["front", "left", "right", "top", "bottom", "back"][i]}`}>
+                                                <strong className='cube-content-text'>{skill}</strong>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </motion.div>
                         </Container>
                     </Grid>
                 </Grid>
-
             </Container>
         </motion.div>
     )
